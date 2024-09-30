@@ -1,11 +1,11 @@
 import 'dotenv/config';  // Loads environment variables
 import axios from 'axios';
 import cron from 'node-cron';
-import sanityClient from '@sanity/client';
+import { createClient } from '@sanity/client';
 import { v4 as uuidv4 } from 'uuid';  // For generating unique IDs
 
 // Initialize Sanity client
-const client = sanityClient({
+const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
   token: process.env.SANITY_TOKEN,
