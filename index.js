@@ -173,10 +173,11 @@ async function uploadImageToSanity(imageUrl) {
 }
 
 // Schedule the cron job to run daily at 9 AM
-cron.schedule('0 9 * * *', () => {
-  console.log("Running cron job to generate and post code snippet...");
-  generateCodeSnippet();
+// Schedule the cron job to run daily at 20:00 (8 PM) SAST (South African Time)
+cron.schedule('0 18 * * *', () => {
+    console.log("Running cron job to generate and post code snippet...");
+    generateCodeSnippet();
+  }, {
+    timezone: "Africa/Johannesburg"  // South African time zone
 });
 
-// Initial run
-generateCodeSnippet();
